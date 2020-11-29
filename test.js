@@ -75,7 +75,7 @@ test.serial('don\'t kill self', async t => {
 
 test.serial('don\'t kill `fkill` when killing `node`', async t => {
 	const originalFkillPid = process.pid;
-	await fkill('node');
+	await fkill('node').catch(error => {});
 
 	t.true(await processExists(originalFkillPid));
 });
